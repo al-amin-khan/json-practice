@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>JSON Practice</title>
+</head>
+
+<body>
+  <h3>Users</h3>
+  <ol id="user-list">
+
+  </ol>
+
+
+  <script type="text/javascript">
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => displayUsers(json))
+
+      function displayUsers(users) {
+        const userName = users.map(user => user.username);
+
+        const orderedList = document.getElementById("user-list");
+        for (let i = 0; i < userName.length; i++) {
+          const user = userName[i];
+          const list = document.createElement("li");
+          list.innerText = user;
+          orderedList.appendChild(list);
+
+        }
+      }
+  </script>
+
+</body>
+
+</html>
